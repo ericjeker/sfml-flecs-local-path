@@ -36,8 +36,10 @@ int main()
     const flecs::world world;
 
     // circle with 100-pixel radius, green fill
-    const auto triangle = world.entity().set<CircleRenderable>({}).set<Transform>({.position = {1920 / 2.f, 1080 / 2.f}});
+    const auto triangle = world.entity().set<CircleRenderable>({}).set<Transform>({.position = {Configuration::WINDOW_SIZE.x / 2.f, Configuration::WINDOW_SIZE.y / 2.f}});
     auto& shape = triangle.get_mut<CircleRenderable>().shape;
+    shape.setRadius(100.f);
+    shape.setPointCount(3);
     shape.setFillColor(sf::Color::Green);
     shape.setOrigin({100.f, 100.f});
 

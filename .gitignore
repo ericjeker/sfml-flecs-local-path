@@ -1,0 +1,13 @@
+# Ignore FetchContent clones
+**/Build/_deps
+
+# IDEs
+.idea
+.vs
+.vscode
+.cache
+
+# Build
+Install
+Build
+Out

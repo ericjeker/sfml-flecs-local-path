@@ -1,0 +1,3 @@
+[submodule "Vendor/sfml-flecs-engine"]
+	path = Vendor/sfml-flecs-engine
+	url = https://github.com/ericjeker/sfml-flecs-engine.git

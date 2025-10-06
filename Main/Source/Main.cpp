@@ -56,8 +56,8 @@ int main()
     shape.setPointCount(3);
     shape.setFillColor(sf::Color::Green);
     shape.setOrigin({5.f, 5.f});
-    triangle.set<Anime::Timer>({.duration = .3f, .loop = true, .onLoop = [](const flecs::entity e, const Anime::Timer&) {
-                                    e.get_mut<Transform>().rotation += 30.f;
+    triangle.set<Anime::Timer>({.loop = true, .onUpdate = [](const flecs::entity e, const Anime::Timer&) {
+                                    e.get_mut<Transform>().rotation += 180.f * e.world().delta_time();
                                 }});
 
     // Animated square for testing
@@ -76,7 +76,7 @@ int main()
          .onUpdate =
              [](const flecs::entity e, const Anime::Timer& timer) {
                  const float t = timer.elapsed / timer.duration;
-                 const float easedT = Anime::Easing::powerIn(t, 3.0f);
+                 const float easedT = Anime::Easing::elasticOut(t);
 
                  // Calculate the easing from the initial position
                  const float startX = Configuration::WINDOW_SIZE.x / 2.f - 250.f;
